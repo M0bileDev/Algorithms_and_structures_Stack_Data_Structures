@@ -14,6 +14,18 @@ fun main() {
         print(stack)
     }
 
+    "using a peek" example {
+        val stack = StackImpl<Int>().apply {
+            push(1)
+            push(2)
+        }
+        println(stack)
+        print("peek for the most top element in stack: ${stack.peek()}")
+        stack.push(3)
+        println("\n$stack")
+        print("peek for the most top element in stack: ${stack.peek()}")
+    }
+
 }
 
 infix fun String.example(function: () -> Unit) {
