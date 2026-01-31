@@ -43,6 +43,16 @@ fun main() {
         print("peek for the most top element in stack: ${stack.peek()}")
     }
 
+    "check parentheses validation" example {
+        val test1 = "h((e))llo(world)()"
+        val result1 = test1.checkParentheses()
+        println("For string representation of \"$test1\" the parentheses are balanced: $result1")
+
+        val test2 = "(hello world"
+        val result2 = test2.checkParentheses()
+        println("For string representation of \"$test2\" the parentheses are balanced: $result2")
+    }
+
 }
 
 infix fun String.example(function: () -> Unit) {
