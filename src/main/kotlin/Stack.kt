@@ -1,7 +1,7 @@
 interface Stack<T : Any> {
     fun push(element: T)
     fun pop(): T?
-    fun peek():T?
+    fun peek(): T?
 
     val count: Int
 
@@ -11,6 +11,20 @@ interface Stack<T : Any> {
 
 class StackImpl<T : Any> : Stack<T> {
     private val storage = arrayListOf<T>()
+
+    companion object {
+        fun <T : Any> create(items: Iterable<T>): Stack<T> {
+            val stack = StackImpl<T>()
+            for (item in items) {
+                stack.push(item)
+            }
+            return stack
+        }
+
+        fun <T : Any> stackOf(vararg elements: T): Stack<T> {
+            return create(elements.asList())
+        }
+    }
 
     override fun toString() = buildString {
         appendLine("-----top-----")
