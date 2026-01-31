@@ -3,7 +3,7 @@ interface Stack<T : Any> {
     fun pop(): T?
 }
 
-class StackImpl<T: Any>: Stack<T>{
+class StackImpl<T : Any> : Stack<T> {
     private val storage = arrayListOf<T>()
 
     override fun toString() = buildString {
@@ -14,11 +14,14 @@ class StackImpl<T: Any>: Stack<T>{
         appendLine("-----bottom-----")
     }
 
+    //O(1) time complexity
     override fun push(element: T) {
-        TODO("Not yet implemented")
+        storage.add(element)
     }
 
+    //O(1) time complexity
     override fun pop(): T? {
-        TODO("Not yet implemented")
+        if (storage.isEmpty()) return null
+        return storage.removeAt(storage.size - 1)
     }
 }
