@@ -52,3 +52,19 @@ class StackImpl<T : Any> : Stack<T> {
     override val count: Int
         get() = storage.size
 }
+
+fun String.checkParentheses(): Boolean {
+    val stack = StackImpl<Char>()
+
+    for (character in this) {
+        when (character) {
+            '(' -> stack.push(character)
+            ')' -> if (stack.isEmpty) {
+                return false
+            } else {
+                stack.pop()
+            }
+        }
+    }
+    return stack.isEmpty
+}
